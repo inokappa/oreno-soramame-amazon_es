@@ -1,5 +1,5 @@
 DOCKER_BUILD := docker build --no-cache=true -t soramame-runner-amazon_es .
-DOCKER_RUN := docker run --rm --name soramame-runnner-amazon_es --env "ES_HOST=YOUR_AMAZON_ES_ENDPOINR" -v /etc/localtime:/etc/localtime:ro soramame-runner-amazon_es
+DOCKER_RUN := docker run --rm --name soramame-runnner-amazon_es --env "ES_HOST=YOUR_AMAZON_ES_ENDPOINT" -v /etc/localtime:/etc/localtime:ro soramame-runner-amazon_es
 
 build:
 	$(DOCKER_BUILD)
