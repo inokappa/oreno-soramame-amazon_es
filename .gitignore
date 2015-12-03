@@ -1,0 +1,8 @@
+test.*
+*yml_ver
+*.yml
+*~
+*.swp
+*bk
+output/*
+Makefile
