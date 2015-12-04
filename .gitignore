@@ -6,5 +6,4 @@ test.*
 *bk
 output/*
 Makefile
-kibana/kibana_visualize.rb
-kibana/kibana_search.rb
+kibana/Makefile

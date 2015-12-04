@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ ${1} = "search" ];then
+  cd /app/
+  ./kibana_search.rb
+elif [ ${1} = "visualize" ];then
+  cd /app/
+  ./kibana_visualize.rb
+fi

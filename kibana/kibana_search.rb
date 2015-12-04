@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
 
 require 'json'
@@ -5,7 +6,7 @@ require 'net/http'
 require 'uri'
 
 def post_to_elasticsearch(json, id)
-  uri  = "https://YOUR_AMAZON_ES_ENDPOINT/.kibana-4/search/#{id}"
+  uri  = "https://" + ENV["ES_HOST"] + "/.kibana-4/search/#{id}"
   uri  = URI.parse(uri)
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = true
@@ -22,8 +23,9 @@ def post_to_elasticsearch(json, id)
 end
 
 lines = 0
-File.open('place_name.tsv') do |file|
+File.open('/tmp/place_name.tsv', "r:UTF-8") do |file|
   file.each_line do |line|
+    puts line
     array = line.split("\t")
     template = <<EOS
 {
@@ -44,7 +46,7 @@ File.open('place_name.tsv') do |file|
 }
 EOS
     lines += 1
-    File.write("./search/#{lines}-#{line.chomp}.txt", template)
+    File.write("/tmp/search/#{lines}-#{line.chomp}.txt", template)
     # puts template
     post_to_elasticsearch(template, array[1].chomp)
   end
