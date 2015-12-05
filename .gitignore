@@ -7,3 +7,6 @@ test.*
 output/*
 Makefile
 kibana/Makefile
+snapshot/Makefile
+snapshot/terraform/Makefile
+snapshot/terraform/terraform.tfstate*

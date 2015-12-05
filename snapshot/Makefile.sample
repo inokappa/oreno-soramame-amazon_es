@@ -1,0 +1,17 @@
+DOCKER_BUILD        := docker build --no-cache=true -t oreno-es-index-snapshot .
+DOCKER_RUN_REGIST   := docker run --rm --name oreno-es-index-snapshot --env "ES_HOST=search-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.es.amazonaws.com" --env "ES_SNAPSHOT=your-snapshot" -v `pwd`:/tmp -v /etc/localtime:/etc/localtime:ro oreno-es-index-snapshot regist
+DOCKER_RUN_CREATE   := docker run --rm --name oreno-es-index-snapshot --env "ES_HOST=search-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.es.amazonaws.com" --env "ES_SNAPSHOT=your-snapshot" --env "ES_SNAPSHOT_NAME_PREFIX=your-snapshot" -v `pwd`:/tmp -v /etc/localtime:/etc/localtime:ro oreno-es-index-snapshot create
+DOCKER_RUN_LIST     := docker run --rm --name oreno-es-index-snapshot --env "ES_HOST=search-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.es.amazonaws.com" --env "ES_SNAPSHOT=your-snapshot" -v `pwd`:/tmp -v /etc/localtime:/etc/localtime:ro oreno-es-index-snapshot list
+
+#
+build:
+	@$(DOCKER_BUILD)
+
+snapshot-regist:
+	@$(DOCKER_RUN_REGIST)
+
+snapshot-create:
+	@$(DOCKER_RUN_CREATE)
+
+snapshot-list:
+	@$(DOCKER_RUN_LIST)

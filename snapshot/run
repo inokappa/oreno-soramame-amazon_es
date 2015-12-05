@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ ${1} = "regist" ];then
+  cd /app/
+  ./snapshot.rb regist
+elif [ ${1} = "create" ];then
+  cd /app/
+  ./snapshot.rb create
+elif [ ${1} = "list" ];then
+  cd /app/
+  ./snapshot.rb list
+fi

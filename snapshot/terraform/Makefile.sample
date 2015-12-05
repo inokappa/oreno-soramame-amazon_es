@@ -1,0 +1,9 @@
+PLAN  := terraform plan -var 'access_key=AKXXXXXXXXXXXXXXXXXX' -var 'secret_key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' -var 's3_bucket_name=your-bucket'
+APPLY := terraform apply -var 'access_key=AKXXXXXXXXXXXXXXXXXX' -var 'secret_key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' -var 's3_bucket_name=your-bucket'
+
+#
+tf-plan:
+	@$(PLAN)
+
+tf-apply:
+	@$(APPLY)
