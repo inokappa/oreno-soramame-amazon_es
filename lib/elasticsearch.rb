@@ -3,11 +3,18 @@
 require 'json'
 require 'net/http'
 require 'uri'
+require 'elasticsearch'
+
+def bulk_post(uri, data)
+  puts data
+  c = Elasticsearch::Client.new log: true, url: uri
+  c.bulk body:data
+end
 
 def http_request(uri, body)
   uri  = URI.parse(uri)
   http = Net::HTTP.new(uri.host, uri.port)
-  http.use_ssl = true
+  # http.use_ssl = true
   req  = Net::HTTP::Post.new(uri.request_uri)
   req["Content-Type"] = "application/json"
   req.body = body
